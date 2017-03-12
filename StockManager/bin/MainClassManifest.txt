@@ -1,0 +1,2 @@
+Main-Class: hirondelle.stocks.main.Launcher
+Class-Path: jlfgr-1_0.jar jh.jar

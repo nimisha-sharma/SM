@@ -1,0 +1,94 @@
+<project name="StocksManagerSonar" default="sonar" basedir="." xmlns:sonar="antlib:org.sonar.ant">
+
+
+
+<target name="clean">
+                <delete dir="bin"/>
+</target>
+   
+     <!-- SERVER  ON A REMOTE HOST -->
+                
+
+                      
+                <property name="sonar.host.url" value="http://localhost:9000"/>
+                <property name="sonar.jdbc.url" value=" jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true"/>
+                <property name="sonar.jdbc.driverClassName" value="com.mysql.jdbc.Driver"/>
+                <property name="sonar.jdbc.username" value="root"/>
+                <property name="sonar.jdbc.password" value="root"/>  
+                <property name="sonar.login" value="admin"/>
+                <property name="sonar.password" value="admin"/>
+                                <property name="sonar.projectName" value="StockManager" />
+                                <property name="sonar.projectVersion" value="1.0" />
+                                <property name="sonar.projectKey" value="hcl.dryice:stockmanager" />
+                                <!-- project sources directories (required) -->
+                    <property name="sonar.sources" value="src" />
+                    <property name="sonar.binaries" value="bin" />
+					<property name="sonar.libraries" value="lib/*.jar" />
+                <target name="sonar">  
+                <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+					<classpath path="C:\sonar\lib\sonar-ant-task-2.2.jar" />
+</taskdef>
+    <sonar:sonar/>
+</target> 
+
+
+<target name="compile" depends="clean">
+   <mkdir dir="bin"/>
+    <javac srcdir="src" destdir="bin" includeantruntime="true">
+                                <classpath>
+      <!--<pathelement path="${classpath}"/>-->
+                                                <pathelement location="lib/junit-4.6.jar"/>
+                                                <pathelement location="jnlp/jh.jar"/>
+                                </classpath>
+                </javac>              
+</target>
+
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<project name="StocksManager" default="compile" basedir=".">
+
+ <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+ <classpath path="D:\Subash_Backup\My work space\apache-ant-1.7.1-bin\apache-ant-1.7.1\lib\sonar-ant-task-2.1.jar" />	
+ </taskdef>
+
+<target name="clean">
+
+<delete dir="bin"/>
+<property name="sonar.jdbc.url" value=" jdbc:mysql://localhost:3306/demo?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true"/>
+   <property name="sonar.jdbc.driverClassName" value="com.mysql.jdbc.Driver"/>
+   <property name="sonar.jdbc.username" value="root"/>
+   <property name="sonar.jdbc.password" value="root"/>
+    
+  <property name="sonar.host.url" value="http://localhost:9000"/>
+<target name="sonar" depends="compile">
+                                <property name="sonar.sources" value="src"/> 
+                                <sonar:sonar key="org.ch02src:ch02src" version="0.1" xmlns:sonar="antlib:org.sonar.ant"/>
+</target> 
+</target>
+<target name="compile" depends="clean">
+   <mkdir dir="bin"/>
+     <javac srcdir="src" destdir="bin" includeantruntime="true">
+	<classpath>
+     
+      <pathelement location="lib/junit-4.6.jar"/>
+
+	  <pathelement location="jnlp/jh.jar"/>
+    </classpath>
+</javac>	
+</target>
+</project>
+
+-->
